@@ -1,0 +1,78 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    overflow-x: clip;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+  body {
+    @apply bg-canvas text-ink font-sans;
+    overflow-x: clip;
+    font-feature-settings: 'cv11', 'ss01';
+  }
+  #root {
+    min-height: 100vh;
+    min-height: 100dvh;
+  }
+  h1, h2, h3 {
+    @apply font-display tracking-tight;
+  }
+  ::selection {
+    @apply bg-green-500/20;
+  }
+}
+
+@layer components {
+  .card {
+    @apply rounded-2xl border border-slate-200/70 bg-white shadow-card;
+  }
+  .num {
+    font-variant-numeric: tabular-nums;
+  }
+  .focus-ring {
+    @apply outline-none focus-visible:ring-4 focus-visible:ring-green-500/20 focus-visible:border-green-600;
+  }
+  .input {
+    @apply focus-ring w-full rounded-xl border border-slate-200 bg-white px-3.5 py-2.5 text-sm text-ink placeholder:text-slate-400 transition-colors hover:border-slate-300;
+  }
+  .label {
+    @apply mb-1.5 block text-xs font-medium text-slate-600;
+  }
+  .btn {
+    @apply focus-ring inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold transition-all duration-150 active:scale-[0.98] disabled:pointer-events-none disabled:opacity-50;
+  }
+  .btn-primary {
+    @apply btn bg-emerald-800 text-white shadow-sm shadow-emerald-900/20 hover:bg-emerald-700;
+  }
+  .btn-action {
+    @apply btn bg-green-500 text-white shadow-sm shadow-green-600/30 hover:bg-green-600;
+  }
+  .btn-ghost {
+    @apply btn border border-slate-200 bg-white text-slate-700 hover:border-slate-300 hover:bg-slate-50;
+  }
+  .segmented {
+    @apply inline-flex rounded-xl bg-slate-100/80 p-1;
+  }
+  .segmented > button {
+    @apply focus-ring rounded-lg px-3 py-1.5 text-xs font-semibold text-slate-500 transition-all hover:text-slate-800;
+  }
+  .segmented > button[aria-pressed='true'] {
+    @apply bg-white text-ink shadow-sm;
+  }
+}
+
+/* Thin, quiet scrollbars inside panels */
+.scroll-thin::-webkit-scrollbar { width: 8px; height: 8px; }
+.scroll-thin::-webkit-scrollbar-thumb { background: rgb(148 163 184 / 0.35); border-radius: 999px; }
+.scroll-thin::-webkit-scrollbar-track { background: transparent; }
+
+input[type='range'] { accent-color: #16a34a; }
+input[type='date']::-webkit-calendar-picker-indicator { opacity: 0.5; cursor: pointer; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
